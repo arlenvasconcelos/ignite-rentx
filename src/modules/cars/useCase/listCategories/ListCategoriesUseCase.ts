@@ -10,7 +10,7 @@ class ListCategoriesUseCase {
     private categoryRepository: ICategoriesRepository
   ) {}
 
-  execute(): Promise<Category[]> {
+  async execute(): Promise<Category[]> {
     return this.categoryRepository.list();
   }
 }
