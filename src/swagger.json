@@ -72,6 +72,75 @@
           }
         }
       }
+    },
+    "/categories/import": {
+      "post" : {
+        "tags": ["Category"],
+        "summary":"Import categories",
+        "description":"Import categories from csv file",
+        "requestBody": {
+          "content": {
+            "multipart/form-data":{
+              "schema":{
+                "type": "object",
+                "properties":{
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding":{
+                "file": {
+                  "contentType": ["image/png", "image/jpeg"]
+                }
+              }
+
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/specifications": {
+      "post" : {
+        "tags": ["Specification"],
+        "summary":"Create a Specification",
+        "description":"Create a new Specification",
+        "requestBody": {
+          "content": {
+            "application/json":{
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Specification name sample",
+                  "description": "Specification description sample"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Category already exists"
+          }
+        }
+      }
     }
   }
 
