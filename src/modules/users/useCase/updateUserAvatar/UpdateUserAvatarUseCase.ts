@@ -1,6 +1,6 @@
+import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "../../../../errors/AppError";
 import { deleteFile } from "../../../../utils/file";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 

@@ -8,10 +8,11 @@
     "strictPropertyInitialization": false,
     "baseUrl": "./src",
     "paths": {
-      "modules/*": ["modules/*"],
-      "errors/*": ["errors/*"],
-      "utils/*": ["utils/*"],
-      "config/*": ["config/*"]
+      "@modules/*": ["modules/*"],
+      "@errors/*": ["errors/*"],
+      "@utils/*": ["utils/*"],
+      "@config/*": ["config/*"],
+      "@shared/*": ["shared/*"]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,
