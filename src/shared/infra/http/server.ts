@@ -6,12 +6,12 @@ import swaggerDocument from "swagger.json";
 
 import { AppError } from "@shared/errors/AppError";
 
+import createConnection from "../typeorm";
 import { router } from "./routes";
-
-import "../typeorm";
 
 import "@shared/container";
 
+createConnection();
 const app = express();
 
 app.use(express.json());
