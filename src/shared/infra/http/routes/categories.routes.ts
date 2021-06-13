@@ -18,7 +18,12 @@ const listCategoriesController = new ListCategoriesController();
 const importCategoriesController = new ImportCategoriesController();
 
 categoriesRoutes.use(ensureAuthenticated);
-categoriesRoutes.post("/", ensureAdmin, createCategoryController.handle);
+categoriesRoutes.post(
+  "/",
+  ensureAuthenticated,
+  ensureAdmin,
+  createCategoryController.handle
+);
 
 categoriesRoutes.get("/", listCategoriesController.handle);
 

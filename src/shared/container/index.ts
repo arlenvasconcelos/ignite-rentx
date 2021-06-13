@@ -1,6 +1,8 @@
+import { CarsImagesRepository } from "@modules/cars/infra/repositories/CarsImagesRepository";
 import { CarsRepository } from "@modules/cars/infra/repositories/CarsRepository";
 import { CategoriesRepository } from "@modules/cars/infra/repositories/CategoriesRepository";
 import { SpecificationsRepository } from "@modules/cars/infra/repositories/SpecificationsRepository";
+import { ICarsImagesRepository } from "@modules/cars/repositories/ICarsImagesRepository";
 import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
 import { ISpecificationsRepository } from "@modules/cars/repositories/ISpecificationsRepository";
@@ -24,3 +26,8 @@ container.registerSingleton<IUsersRepository>(
 );
 
 container.registerSingleton<ICarsRepository>("CarsRepository", CarsRepository);
+
+container.registerSingleton<ICarsImagesRepository>(
+  "CarsImagesRepository",
+  CarsImagesRepository
+);
