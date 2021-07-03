@@ -55,8 +55,6 @@ class ImportCategoriesUseCase {
         category.name
       );
 
-      console.log(categoryAlreadyExists);
-
       if (!categoryAlreadyExists) {
         await this.categoryRepository.create(category);
       }
