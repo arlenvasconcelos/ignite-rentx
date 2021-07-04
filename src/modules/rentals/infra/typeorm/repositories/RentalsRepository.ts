@@ -18,6 +18,7 @@ class RentalsRepository implements IRentalsRepository {
 
     return openByCar;
   }
+
   async findOpenRentalByUser(user_id: string): Promise<Rental | undefined> {
     const openByUser = await this.repository.findOne({
       user_id,
@@ -25,6 +26,7 @@ class RentalsRepository implements IRentalsRepository {
 
     return openByUser;
   }
+
   async create({
     user_id,
     car_id,
@@ -39,6 +41,17 @@ class RentalsRepository implements IRentalsRepository {
     await this.repository.save(rental);
 
     return rental;
+  }
+
+  async findById(id: string): Promise<Rental | undefined> {
+    const rental = await this.repository.findOne({ id });
+
+    return rental;
+  }
+
+  async list(): Promise<Rental[]> {
+    const all = await this.repository.find();
+    return all;
   }
 }
 

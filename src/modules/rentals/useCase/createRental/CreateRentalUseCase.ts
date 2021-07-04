@@ -1,3 +1,4 @@
+import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
 import { ICreateRentalDTO } from "@modules/rentals/dtos/ICreateRentalDTO";
 import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { inject, injectable } from "tsyringe";
@@ -14,6 +15,8 @@ class CreateRentalUseCase {
   constructor(
     @inject("RentalsRepository")
     private rentalRepository: IRentalsRepository,
+    @inject("CarsRepository")
+    private carsRepository: ICarsRepository,
     @inject("DayjsDateProvider")
     private dateProvider: IDateProvider
   ) {}
@@ -37,10 +40,12 @@ class CreateRentalUseCase {
       throw new AppError("There's a rental in progress for user");
 
     const compare = this.dateProvider.compare(new Date(), expected_return_date);
-
+    console.log(compare);
     if (compare < MIN_INTERVAL) {
       throw new AppError("Min hour not satisfied");
     }
+
+    this.carsRepository.updateAvailable(car_id, false);
 
     const newRental = await this.rentalRepository.create({
       user_id,

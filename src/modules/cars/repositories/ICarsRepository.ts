@@ -7,6 +7,7 @@ interface ICarsRepository {
   findById(id: string): Promise<Car | undefined>;
   create(data: ICreateCarDTO): Promise<void>;
   list(): Promise<Car[]>;
+  updateAvailable(id: string, available: boolean): Promise<void>;
 }
 
 export { ICarsRepository };

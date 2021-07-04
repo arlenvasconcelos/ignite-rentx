@@ -8,6 +8,8 @@ import createConnection from "@shared/infra/typeorm";
 
 let connection: Connection;
 
+jest.setTimeout(30000);
+
 describe("Create Category Controller", () => {
   beforeAll(async () => {
     connection = await createConnection();
