@@ -40,7 +40,7 @@ class CreateRentalUseCase {
       throw new AppError("There's a rental in progress for user");
 
     const compare = this.dateProvider.compare(new Date(), expected_return_date);
-    console.log(compare);
+
     if (compare < MIN_INTERVAL) {
       throw new AppError("Min hour not satisfied");
     }
